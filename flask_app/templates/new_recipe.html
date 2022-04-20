@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Recipe</title>
+
+</head>
+<body>
+
+    <div>
+        <a class="btn btn-success" href="/dashboard">Dashboard</a>
+        <p></p>
+        <a class="btn btn-danger" href="/logout">Logout</a>
+    </div>
+
+    <h1>Add New Recipe</h1>
+
+    <form action="/create/recipe" method="post">
+
+        <div>
+            <label for="name" class="form-label">Name:</label><br>
+            <input type="text" class="form-control" name="name">
+            <p></p>
+            <label for="description" class="form-label">Description:</label><br>
+            <textarea name="description" class="form-control " cols="30" rows="5"></textarea>
+            <p></p>
+            <label for="instructions" class="form-label">Instructions:</label><br>
+            <textarea name="instructions" class="form-control" cols="30" rows="5"></textarea>
+        </div>
+        
+        <div>
+            <p></p>
+            <label for="date_made" class="form-label">Date Made:</label><br>
+            <input type="date" name="date_made">
+            <p></p>
+            <label for="prep_time" class="form-label">Ready in 30 Minutes?</label><br>
+            <input id="yes" type="radio" name="prep_time" value="1">
+            <label for="yes">Yes</label>
+            <input id="no" type="radio" name="prep_time" value="0">
+            <label for="no">No</label><br>
+            <p></p>
+            <input type="submit" value="Create" class="btn btn-warning">
+        </div>
+
+        {% with messages = get_flashed_messages(category_filter=['recipe']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p> {{ message }} </p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </form>
+    
+</body>
+</html>

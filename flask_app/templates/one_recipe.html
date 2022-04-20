@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Recipe</title>
+
+</head>
+<body>
+
+    <a class="btn btn-success" href="/dashboard">Dashboard</a>
+
+    <p></p>
+
+    <a class="btn btn-danger" href="/logout">Logout</a>
+
+    <h1>Welcome {{ user.first_name }}!</h1>
+
+    <h1>{{ recipe.name }}</h1>
+
+    <div>
+            <p><span>Description: </span>{{ recipe.description }}</p>
+            <p><span>Under 30 Minutes: </span>
+            {% if recipe.make_time == 1 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+            </p>
+
+            <p><span>Instructions: </span>{{ recipe.instructions }}</p>
+
+            <p><span>Date Made: </span>{{ recipe.date_made.strftime('%m-%d-%Y') }}</p>
+
+            <p>Creator: </span>{{ recipe.user.first_name }}</p>
+    </div>
+
+</body>
+</html>
